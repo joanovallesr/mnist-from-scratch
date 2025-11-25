@@ -47,7 +47,7 @@ with col1:
 # Predict Logic
 if canvas_result.image_data is not None:
     # 1. Get image data from canvas
-    img = canvas_result.image_data.astype('unit8')
+    img = canvas_result.image_data.astype('uint8')
     # 2. Covert to grayscale
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # 3. Resize to 28x28
