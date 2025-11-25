@@ -63,7 +63,7 @@ if canvas_result.image_data is not None:
 
     if st.button("Predict"):
         # Predict using the loaded model
-        prediction = model.predict(img_flattened)[0]
+        prediction = int(model.predict(img_flattened))
 
         # Get probability distribution (output layer A)
         probs = model.layers[f"A{model.L - 1}"]
