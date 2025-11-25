@@ -15,7 +15,7 @@ Draw a digit (0-9) in the canvas below and click 'Predict' to see the model's pr
 # Sidebar for settings
 st.sidebar.header("Settings")
 model_choice = st.sidebar.selectbox("Choose Activation Function Model", 
-                                    ("ReLU", "Leaky ReLU", "Sigmoid", "Tanh"))
+                                    ("relu", "leaky_relu", "sigmoid", "tanh"))
 
 # Load the corresponding model
 @st.cache_resource
