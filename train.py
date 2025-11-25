@@ -21,7 +21,9 @@ def load_mnist_data():
     X_all = np.concatenate([X_train, X_test])
     y_all = np.concatenate([y_train, y_test])
 
-    X = X_all.reshape(X_all.shape[0], -1).T / 255.0  # Normalize and flatten
+    X_flat = X_all.reshape(X_all.shape[0], -1)
+    X = X_flat.T / 255.0  # Normalize to [0, 1]
+
     Y = np.eye(10)[y_all].T  # One-hot encode labels
 
     return X, Y
@@ -40,7 +42,15 @@ def main():
     for act in activations:
         print(f"\nTraining with activation function: {act}")
         nn = NeuralNetwork(input_size=784, hidden_layers=[128, 64], output_size=10, activation=act)
-        nn.train(X_train, Y_train, epochs=200, lr=0.01)
+
+        if act == 'sigmoid':
+            learning_rate = 0.5   # Much higher LR for Sigmoid
+            num_epochs = 1000     # Sigmoid needs more time to converge
+        else:
+            learning_rate = 0.15  # Standard LR for ReLU/Tanh
+            num_epochs = 300
+        
+        nn.train(X_train, Y_train, epochs=num_epochs, lr=learning_rate)
 
         save_path = f'models/model_{act}.pkl'
         nn.save_model(save_path)
