@@ -66,7 +66,7 @@ if canvas_result.image_data is not None:
         prediction = int(model.predict(img_flattened))
 
         # Get probability distribution (output layer A)
-        probs = model.layers[f"A{model.L - 1}"]
+        probs = model.cache[f"A{model.L}"]
         confidence = probs[prediction] * 100
 
         st.metric(label="Predicted Digit", value=str(prediction))
