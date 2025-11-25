@@ -20,3 +20,10 @@ This project manually implements the calculus behind neural networks:
     $$dW^{[l]} = \frac{1}{m} dZ^{[l]} A^{[l-1]T}$$
     $$db^{[l]} = \frac{1}{m} \sum dZ^{[l]}$$
 * **Optimization:** Stochastic Gradient Descent (SGD).
+
+## Performance & Limitations
+The model achieves **~90% accuracy** on the official MNIST test dataset. 
+
+**However, please note:** Real-world performance on the interactive canvas may be lower. The MNIST dataset consists of pre-processed, centered, and grayscale images with specific handwriting styles. When you draw a digit yourself, variations in stroke thickness, positioning, and size can introduce "distribution shift," which challenges the model. 
+
+This project focuses on the **mathematical implementation** of neural networks rather than achieving state-of-the-art production accuracy.
